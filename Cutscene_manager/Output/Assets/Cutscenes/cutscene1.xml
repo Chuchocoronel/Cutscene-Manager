@@ -1,0 +1,13 @@
+<cutscene>
+  <data>
+    <element type="entity" id="1"/>
+    <element type="fx" id="2"/>
+    <element type="music" id="3"/>
+  </data>
+  <steps>
+    <step id="1" action="move_to" x="500" y="350"/>
+    <step id="3" action="activate"/>
+    <step id="1" action="move" x="100" y="0"/>
+    <step id="2" action="activate"/>
+  </steps>
+</cutscene>
