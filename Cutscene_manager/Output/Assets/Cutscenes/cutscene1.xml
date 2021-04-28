@@ -5,9 +5,13 @@
     <element type="music" id="3"/>
   </data>
   <steps>
-    <step id="1" action="move_to" x="500" y="350"/>
     <step id="3" action="activate"/>
-    <step id="1" action="move" x="100" y="0"/>
+    <step action="wait" time="5"/>
+    <step id="3" action="deactivate"/>
+    <step id="1" action="activate"/>
+    <step id="1" action="move" x="500" y="350"/>
+    <step id="1" action="move" x="600" y="350"/>
     <step id="2" action="activate"/>
+    <step id="3" action="activate"/>
   </steps>
 </cutscene>

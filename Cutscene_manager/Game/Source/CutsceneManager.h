@@ -3,22 +3,22 @@
 #include "Module.h"
 #include "List.h"
 #include "Point.h"
+#include "Entity.h"
 
 enum StepAction
 {
-	MOVE_TO,
 	MOVE,
 	ACTIVATE,
-	ACTIVATE_AT,
 	DEACTIVATE,
-	WAIT
+	WAITING
 };
 
 enum StepType
 {
 	ENTITY,
 	FX,
-	MUSIC
+	MUSIC,
+	WAIT
 };
 
 class Element
@@ -36,35 +36,41 @@ public:
 	Step();
 	~Step();
 
+	bool Update(float dt);
+
 public:
 
 	StepAction action;
 	Element element;
 
-	iPoint position;
+	Entity* entity;
+	iPoint movement;
 	int FXId;
-	float duration;
+	const char* musicPath;
+	int duration;
 };
 
 class Cutscene
 {
 public:
 
-	Cutscene(SString name);
+	Cutscene();
 	~Cutscene();
 
-	bool LoadEntityElement(int posX, int posY, int id);
-	bool LoadFXElement(unsigned int fx, int id);
+	void LoadEntityElement(Entity* ent, int id);
+	void LoadFXElement(unsigned int fx, int id);
+	void LoadMusicElement(const char* path, int id);
 
 	void StartCutscene();
+	void UpdateCutscene(float dt);
 
-	void MusicStepUpdate(const char* path, int id);
 
 public:
 
-	SString name;
-	List<Element*> elements;
 	List<Step*> steps;
+	ListItem<Step*>* activeStep;
+
+	bool active;
 };
 
 class CutsceneManager : public Module
@@ -80,5 +86,5 @@ public:
 
 public:
 
-	bool cutsceneActive;
+	bool cutsceneIsActive;
 };

@@ -2,8 +2,7 @@
 #include "App.h"
 #include "Render.h"
 #include "Input.h"
-
-#define SPEED 200.0f
+#include "Defs.h"
 
 Entity::Entity(iPoint position, EntityType type, bool active)
 {

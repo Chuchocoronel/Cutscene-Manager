@@ -2,6 +2,8 @@
 #define __SCENE_H__
 
 #include "Module.h"
+#include "CutsceneManager.h"
+#include "Entity.h"
 
 struct SDL_Texture;
 
@@ -34,6 +36,8 @@ public:
 
 private:
 	SDL_Texture* img;
+	Cutscene* cutscene;
+	Entity* entity;
 };
 
 #endif // __SCENE_H__
