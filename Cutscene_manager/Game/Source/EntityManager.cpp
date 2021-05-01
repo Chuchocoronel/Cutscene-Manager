@@ -48,9 +48,9 @@ bool EntityManager::CleanUp()
 	return true;
 }
 
-Entity* EntityManager::CreateEntity(iPoint position, EntityType type, bool active)
+Entity* EntityManager::CreateEntity(iPoint position, EntityType type, bool active, bool isPlayer)
 {
-	Entity* ret = new Entity(position, type, active);
+	Entity* ret = new Entity(position, type, active, isPlayer);
 
 	entities.Add(ret);
 

@@ -14,7 +14,7 @@ class Entity
 {
 public:
 
-    Entity(iPoint position, EntityType type, bool active);
+    Entity(iPoint position, EntityType type, bool active, bool isPlayer);
 
     ~Entity();
 
@@ -29,4 +29,5 @@ public:
     EntityType type;
 
     bool active = true;
+    bool isPlayer = false;
 };

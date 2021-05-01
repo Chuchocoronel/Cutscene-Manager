@@ -180,7 +180,7 @@ void App::FinishUpdate()
 	{
 		PerfTimer pt;
 		SDL_Delay(cappedMs - lastFrameMs);
-		LOG("We waited for %d milliseconds and got back in %f", cappedMs - lastFrameMs, pt.ReadMs());
+		//LOG("We waited for %d milliseconds and got back in %f", cappedMs - lastFrameMs, pt.ReadMs());
 	}
 }
 

@@ -23,7 +23,7 @@ public:
 
 	bool CleanUp();
 
-	Entity* CreateEntity(iPoint position, EntityType type, bool active);
+	Entity* CreateEntity(iPoint position, EntityType type, bool active, bool isPlayer);
 
 	void DestroyEntity(Entity* entity);
 
