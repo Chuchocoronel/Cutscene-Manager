@@ -1,9 +1,11 @@
 #include "CutsceneManager.h"
 
-#include "App.h"
 #include "Log.h"
 #include "Defs.h"
 #include "Audio.h"
+#include "Render.h"
+#include "Entity.h"
+#include "Font.h"
 
 CutsceneManager::CutsceneManager()
 {
@@ -37,6 +39,7 @@ Cutscene* CutsceneManager::LoadCutscene(const char* path)
 			if (string == "entity") newElem->type = ENTITY;
 			else if (string == "fx")  newElem->type = FX;
 			else if (string == "music")  newElem->type = MUSIC;
+			else if (string == "text")  newElem->type = TEXT;
 
 			newElem->id = it.attribute("id").as_int();
 
@@ -82,15 +85,25 @@ Step* CutsceneManager::LoadStep(pugi::xml_node step)
 	if (string == "move")
 	{
 		ret->action = MOVE;
-		ret->movement.x = step.attribute("x").as_int();
-		ret->movement.y = step.attribute("y").as_int();
+		ret->destiny.x = step.attribute("x").as_int();
+		ret->destiny.y = step.attribute("y").as_int();
 	}
 	else if (string == "activate") ret->action = ACTIVATE;
 	else if (string == "deactivate") ret->action = DEACTIVATE;
 	else if (string == "wait")
 	{
 		ret->action = WAITING;
-		ret->duration = step.attribute("time").as_int() * 100;
+		ret->duration = step.attribute("time").as_int();
+		ret->durationAux = ret->duration;
+	}
+
+	SString textString = step.attribute("text").as_string("no");
+
+	if (textString != "no")
+	{
+		ret->text = textString;
+		ret->duration = step.attribute("time").as_int();
+		ret->durationAux = ret->duration;
 	}
 
 	return ret;
@@ -99,6 +112,8 @@ Step* CutsceneManager::LoadStep(pugi::xml_node step)
 Cutscene::Cutscene()
 {
 	this->active = false;
+	this->activeStep = nullptr;
+	this->drawableStep = false;
 }
 
 Cutscene::~Cutscene()
@@ -110,10 +125,7 @@ void Cutscene::LoadEntityElement(Entity* ent, int id)
 	
 	while (it != nullptr)
 	{
-		if (id == it->data->element.id)
-		{
-			it->data->entity = ent;
-		}
+		if (id == it->data->element.id) it->data->entity = ent;
 
 		it = it->next;
 	}
@@ -125,10 +137,7 @@ void Cutscene::LoadFXElement(unsigned int fx, int id)
 
 	while (it != nullptr)
 	{
-		if (id == it->data->element.id)
-		{
-			it->data->FXId = fx;
-		}
+		if (id == it->data->element.id) it->data->FXId = fx;
 		
 		it = it->next;
 	}
@@ -141,10 +150,19 @@ void Cutscene::LoadMusicElement(const char* path, int id)
 
 	while (it != nullptr)
 	{
-		if (id == it->data->element.id)
-		{
-			it->data->musicPath = path;
-		}
+		if (id == it->data->element.id) it->data->musicPath = path;
+
+		it = it->next;
+	}
+}
+
+void Cutscene::LoadTextElement(Font* font, int id)
+{
+	ListItem<Step*>* it = this->steps.start;
+
+	while (it != nullptr)
+	{
+		if (id == it->data->element.id) it->data->font = font;
 
 		it = it->next;
 	}
@@ -181,7 +199,24 @@ void Cutscene::UpdateCutscene(float dt)
 	}
 	else
 	{
-		stepFinished = this->activeStep->data->Update(dt);
+		if (this->activeStep->data->element.type == TEXT) this->drawableStep = true;
+		else stepFinished = this->activeStep->data->Update(dt);
+
+		if (stepFinished)
+		{
+			this->activeStep = this->activeStep->next;
+			stepFinished = false;
+		}
+	}
+}
+
+void Cutscene::DrawCutscene()
+{
+	if (this->drawableStep == true)
+	{
+		bool stepFinished = false;
+
+		stepFinished = this->activeStep->data->Draw();
 
 		if (stepFinished)
 		{
@@ -194,13 +229,16 @@ void Cutscene::UpdateCutscene(float dt)
 Step::Step()
 {
 	this->duration = -1;
+	this->durationAux = -1;
 	this->FXId = -1;
 	this->element.id = -1;
 	this->entity = nullptr;
 	this->musicPath = nullptr;
 	this->action = StepAction::WAITING;
 	this->element.type = StepType::WAIT;
-	this->movement = { 0,0 };
+	this->destiny = { 0,0 };
+	this->font = nullptr;
+	this->text = "";
 }
 
 Step::~Step()
@@ -217,16 +255,19 @@ bool Step::Update(float dt)
 	case ENTITY:
 		if (this->action == MOVE)
 		{
-			this->duration = (abs(this->entity->bounds.x - this->movement.x) + abs(this->entity->bounds.y - this->movement.y)) / speed;
+			iPoint movement = { this->destiny.x - this->entity->bounds.x, this->destiny.y - this->entity->bounds.y };
+			iPoint distance = { abs(this->destiny.x - this->entity->bounds.x), abs(this->destiny.y - this->entity->bounds.y) };
+			iPoint vector;
 
-			if (this->entity->bounds.x > this->movement.x) this->entity->bounds.x -= speed;
-			else if (this->entity->bounds.x < this->movement.x) this->entity->bounds.x += speed;
+			if (distance.x != 0) vector.x = movement.x / distance.x;
+			else vector.x = 0;
+			if (distance.y != 0) vector.y = movement.y / distance.y;
+			else vector.y = 0;
 
-			if (this->entity->bounds.y > this->movement.y) this->entity->bounds.y -= speed;
-			else if (this->entity->bounds.y < this->movement.y) this->entity->bounds.y += speed;
+			this->entity->bounds.x += vector.x * speed;
+			this->entity->bounds.y += vector.y * speed;
 
-			if (duration == 0) ret = true;
-			if ((this->entity->bounds.y == this->movement.x) && (this->entity->bounds.y == this->movement.y)) ret = true;
+			if ((movement.x > -3 && movement.x < 3) && (movement.y > -3 && movement.y < 3)) ret = true;
 		}
 		else if (this->action == ACTIVATE)
 		{
@@ -261,13 +302,45 @@ bool Step::Update(float dt)
 	case WAIT:
 		if (this->action == WAITING)
 		{
-			this->duration -= 60 * dt;
+			this->duration -= 1000 * dt;
 
-			if (duration <= 0) ret = true;
+			if (duration <= 0)
+			{
+				this->duration = this->durationAux;
+				ret = true;
+			}
 		}
 		break;
 	default:
 		break;
+	}
+
+	return ret;
+}
+
+bool Step::Draw()
+{
+	bool ret = false;
+
+	if (this->element.type == TEXT)
+	{
+		if (this->action == ACTIVATE)
+		{
+			SDL_Rect r = { 385, 595, 510, 110 };
+			app->render->DrawRectangle(r, 0, 0, 0, 255, true);
+			SDL_Rect r2 = { 390,600,500,100 };
+			app->render->DrawRectangle(r2, 255, 255, 255, 255, true);
+
+			app->render->DrawText(this->font, this->text.GetString(), { 400, 610, 480,80 }, 36, 5, { 0,0,0,255 }, 880);
+
+			this->duration -= 1000 * (1/60);
+
+			if (duration <= 0)
+			{
+				this->duration = this->durationAux;
+				ret = true;
+			}
+		}
 	}
 
 	return ret;

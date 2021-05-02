@@ -3,13 +3,15 @@
     <element type="entity" id="1"/>
     <element type="fx" id="2"/>
     <element type="music" id="3"/>
+    <element type="text" id="4"/>
   </data>
   <steps>
-    <step id="3" action="activate"/>
-    <step action="wait" time="5"/>
-    <step id="3" action="deactivate"/>
+    <!--<step id="3" action="activate"/>
+    <step action="wait" time="5000"/>
+    <step id="3" action="deactivate"/>-->
     <step id="1" action="activate"/>
     <step id="1" action="move" x="500" y="350"/>
+    <step id="4" action="activate" text="Test de Texto" time="5000"/>
     <step id="1" action="move" x="600" y="350"/>
     <step id="2" action="activate"/>
     <step id="3" action="activate"/>

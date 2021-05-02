@@ -1,9 +1,11 @@
 #pragma once
 
-#include "Module.h"
+#include "App.h"
 #include "List.h"
 #include "Point.h"
-#include "Entity.h"
+
+class Font;
+class Entity;
 
 enum StepAction
 {
@@ -18,6 +20,7 @@ enum StepType
 	ENTITY,
 	FX,
 	MUSIC,
+	TEXT,
 	WAIT
 };
 
@@ -37,6 +40,7 @@ public:
 	~Step();
 
 	bool Update(float dt);
+	bool Draw();
 
 public:
 
@@ -44,10 +48,13 @@ public:
 	Element element;
 
 	Entity* entity;
-	iPoint movement;
+	iPoint destiny;
 	int FXId;
 	const char* musicPath;
 	int duration;
+	int durationAux;
+	Font* font;
+	SString text;
 };
 
 class Cutscene
@@ -60,9 +67,11 @@ public:
 	void LoadEntityElement(Entity* ent, int id);
 	void LoadFXElement(unsigned int fx, int id);
 	void LoadMusicElement(const char* path, int id);
+	void LoadTextElement(Font* font, int id);
 
 	void StartCutscene();
 	void UpdateCutscene(float dt);
+	void DrawCutscene();
 
 
 public:
@@ -70,10 +79,11 @@ public:
 	List<Step*> steps;
 	ListItem<Step*>* activeStep;
 
+	bool drawableStep;
 	bool active;
 };
 
-class CutsceneManager : public Module
+class CutsceneManager
 {
 public:
 

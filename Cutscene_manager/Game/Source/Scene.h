@@ -5,6 +5,7 @@
 #include "CutsceneManager.h"
 #include "Entity.h"
 #include "Map.h"
+#include "Font.h"
 
 struct SDL_Texture;
 
@@ -40,6 +41,7 @@ private:
 	Cutscene* cutscene;
 	Entity* entity;
 	Map* map;
+	Font* font;
 };
 
 #endif // __SCENE_H__

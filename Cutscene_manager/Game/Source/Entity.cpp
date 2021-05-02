@@ -8,8 +8,8 @@ Entity::Entity(iPoint position, EntityType type, bool active, bool isPlayer)
 {
 	this->bounds.x = position.x;
 	this->bounds.y = position.y;
-	this->bounds.w = 32;
-	this->bounds.h = 45;
+	this->bounds.w = 25;
+	this->bounds.h = 32;
 
 	this->type = type;
 

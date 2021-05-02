@@ -34,6 +34,8 @@ bool Scene::Start()
 	map = new Map(app->tex);
 	map->Load("map.tmx");
 
+	font = new Font("Assets/Font/font3.xml", app->tex);
+
 	app->entityMan->CreateEntity({ 500,350 }, EntityType::RED, true, false);
 
 	entity = app->entityMan->CreateEntity({ 200,200 }, EntityType::BLUE, true, true);
@@ -41,6 +43,7 @@ bool Scene::Start()
 	cutscene->LoadEntityElement(entity, 1);
 	cutscene->LoadFXElement(app->audio->LoadFx("Assets/Audio/Fx/hello_man.wav"), 2);
 	cutscene->LoadMusicElement("Assets/Audio/Music/music_spy.ogg", 3);
+	cutscene->LoadTextElement(font, 4);
 
 	return true;
 }
@@ -69,6 +72,11 @@ bool Scene::Update(float dt)
 bool Scene::PostUpdate()
 {
 	map->Draw(app->render);
+
+	if (cutscene->active == true) 
+		cutscene->DrawCutscene();
+
+	//app->render->DrawText(font, "Prueba de Font", { 500,500, 1000, 100 }, 36, 5, { 255,255,255,255 }, 600);
 
 	return true;
 }
