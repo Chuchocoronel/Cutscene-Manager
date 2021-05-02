@@ -11,6 +11,7 @@ enum StepAction
 {
 	MOVE,
 	ACTIVATE,
+	ACTIVATE_AT,
 	DEACTIVATE,
 	WAITING
 };
@@ -72,7 +73,7 @@ public:
 	void StartCutscene();
 	void UpdateCutscene(float dt);
 	void DrawCutscene();
-
+	void CleanUp();
 
 public:
 
@@ -92,7 +93,6 @@ public:
 
 	Cutscene* LoadCutscene(const char* path);
 	Step* LoadStep(pugi::xml_node step);
-
 
 public:
 

@@ -36,14 +36,16 @@ bool Scene::Start()
 
 	font = new Font("Assets/Font/font3.xml", app->tex);
 
-	app->entityMan->CreateEntity({ 500,350 }, EntityType::RED, true, false);
-
-	entity = app->entityMan->CreateEntity({ 200,200 }, EntityType::BLUE, true, true);
 	cutscene = app->cutsceneMan->LoadCutscene("Assets/Cutscenes/cutscene1.xml");
-	cutscene->LoadEntityElement(entity, 1);
-	cutscene->LoadFXElement(app->audio->LoadFx("Assets/Audio/Fx/hello_man.wav"), 2);
-	cutscene->LoadMusicElement("Assets/Audio/Music/music_spy.ogg", 3);
-	cutscene->LoadTextElement(font, 4);
+	cutscene->LoadEntityElement(app->entityMan->CreateEntity({ 200,200 }, EntityType::BLUE, true, true), 1);
+	cutscene->LoadEntityElement(app->entityMan->CreateEntity({ -39, 336 }, EntityType::BLUE, false, false), 2);
+	cutscene->LoadEntityElement(app->entityMan->CreateEntity({ 1057,400 }, EntityType::RED, false, false), 3);
+	cutscene->LoadEntityElement(app->entityMan->CreateEntity({ 1003,368 }, EntityType::RED, false, false), 4);
+	cutscene->LoadFXElement(app->audio->LoadFx("Assets/Audio/Fx/sword_clash.wav"), 5);
+	cutscene->LoadFXElement(app->audio->LoadFx("Assets/Audio/Fx/death.wav"), 6);
+	cutscene->LoadMusicElement("Assets/Audio/Music/fight_theme_2.ogg", 7);
+	cutscene->LoadMusicElement("Assets/Audio/Music/win.ogg", 8);
+	cutscene->LoadTextElement(font, 9);
 
 	return true;
 }
@@ -55,7 +57,6 @@ bool Scene::PreUpdate()
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN) ret = false;
 	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) cutscene->StartCutscene();
-	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) map->drawColliders = !map->drawColliders;
 
 	return ret;
 }
@@ -73,10 +74,7 @@ bool Scene::PostUpdate()
 {
 	map->Draw(app->render);
 
-	if (cutscene->active == true) 
-		cutscene->DrawCutscene();
-
-	//app->render->DrawText(font, "Prueba de Font", { 500,500, 1000, 100 }, 36, 5, { 255,255,255,255 }, 600);
+	if (cutscene->active == true) cutscene->DrawCutscene();
 
 	return true;
 }
@@ -85,6 +83,9 @@ bool Scene::PostUpdate()
 bool Scene::CleanUp()
 {
 	LOG("Freeing scene");
+
+	cutscene->CleanUp();
+	RELEASE(cutscene);
 
 	map->CleanUp();
 

@@ -32,9 +32,9 @@ bool EntityManager::PostUpdate()
 {
 	ListItem<Entity*>* item = entities.start;
 
-	while (item != nullptr && item->data->active == true)
+	while (item != nullptr)
 	{
-		item->data->PostUpdate();
+		if (item->data->active == true) item->data->PostUpdate();
 		item = item->next;
 	}
 

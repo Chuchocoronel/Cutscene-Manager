@@ -1,19 +1,117 @@
+<!--Elements to load from the data to cutscene:
+type = "entity"
+type = "fx"
+type = "music"
+type = "text"
+
+Types of actions:
+action = "move"
+action = "activate"
+action = "activate_at"
+action = "deactivate"
+action = "wait"
+
+////////////////////////////////////////////////
+
+How to put elements in data:
+
+<element type="" id=""/>
+
+////////////////////////////////////////////////
+
+How to put steps depending on the type:
+
+For Entities:
+<step id="" action="move" x="" y=""/>
+<step id="" action="activate"/>
+<step id="" action="activate_at" x="" y=""/>
+<step id="" action="deactivate"/>
+
+For FX or Music:
+<step id="" action="activate"/>
+<step id="" action="deactivate"/>
+
+For Text:
+<step id="" action="activate" text="" time=""/>
+
+For Wait:
+<step action="wait" time=""/>
+
+//////////////////////////////////////////////
+
+The order to create a cutscene is liake this:
+<cutscene>
+  <data>
+    <element type="" id=""/>
+  </data>
+  <steps>
+    <step id="" action=""/>
+  </steps>
+</cutscene>
+
+Extra: All the timing have to be in ms (miliseconds)
+//////////////////////////////////////////////
+-->
+
 <cutscene>
   <data>
     <element type="entity" id="1"/>
-    <element type="fx" id="2"/>
-    <element type="music" id="3"/>
-    <element type="text" id="4"/>
+    <element type="entity" id="2"/>
+    <element type="entity" id="3"/>
+    <element type="entity" id="4"/>
+    <element type="fx" id="5"/>
+    <element type="fx" id="6"/>
+    <element type="music" id="7"/>
+    <element type="music" id="8"/>
+    <element type="text" id="9"/>
   </data>
   <steps>
-    <!--<step id="3" action="activate"/>
-    <step action="wait" time="5000"/>
-    <step id="3" action="deactivate"/>-->
-    <step id="1" action="activate"/>
-    <step id="1" action="move" x="500" y="350"/>
-    <step id="4" action="activate" text="Test de Texto" time="5000"/>
-    <step id="1" action="move" x="600" y="350"/>
-    <step id="2" action="activate"/>
-    <step id="3" action="activate"/>
+    <step id="1" action="activate_at" x="225" y="-50"/>
+    <step id="3" action="activate_at" x="1057" y="400"/>
+    <step id="4" action="activate_at" x="1003" y="368"/>
+    <step id="1" action="move" x="255" y="283"/>
+    <step id="9" action="activate" text="Enemy: Hey, there's an enemy over   there, defensive positions" time="5000"/>
+    <step id="7" action="activate"/>
+    <step id="3" action="move" x="838" y="486"/>
+    <step id="4" action="move" x="837" y="425"/>
+    <step id="1" action="move" x="582" y="384"/>
+    <step id="1" action="move" x="794" y="441"/>
+    <step id="5" action="activate"/>
+    <step id="2" action="activate_at" x="-39" y="336"/>
+    <step id="2" action="move" x="256" y="328"/>
+    <step id="9" action="activate" text="Ally: Captain!!" time="2000"/>
+    <step id="2" action="move" x="582" y="384"/>
+    <step id="2" action="move" x="795" y="486"/>
+    <step id="5" action="activate"/>
+    <step action="wait" time="1000"/>
+    <step id="5" action="activate"/>
+    <step action="wait" time="1000"/>
+    <step id="5" action="activate"/>
+    <step action="wait" time="1000"/>
+    <step id="5" action="activate"/>
+    <step action="wait" time="1000"/>
+    <step id="6" action="activate"/>
+    <step id="3" action="deactivate"/>
+    <step id="2" action="move" x="838" y="473"/>
+    <step action="wait" time="1000"/>
+    <step id="5" action="activate"/>
+    <step action="wait" time="1000"/>
+    <step id="5" action="activate"/>
+    <step action="wait" time="1000"/>
+    <step id="5" action="activate"/>
+    <step action="wait" time="1000"/>
+    <step id="5" action="activate"/>
+    <step action="wait" time="1000"/>
+    <step id="6" action="activate"/>
+    <step id="4" action="deactivate"/>
+    <step action="wait" time="2000"/>
+    <step id="8" action="activate"/>
+    <step id="9" action="activate" text="Ally: Are you okay captain?" time="4000"/>
+    <step id="9" action="activate" text="You: Yes, yes... Now, soldier, go to   explore!" time="5000"/>
+    <step id="9" action="activate" text="Ally: Yes sir!" time="2000"/>
+    <step id="2" action="move" x="1084" y="568"/>
+    <step id="2" action="move" x="1084" y="736"/>
+    <step id="2" action="deactivate"/>
+    <step id="8" action="deactivate"/>
   </steps>
 </cutscene>

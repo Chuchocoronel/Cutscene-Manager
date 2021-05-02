@@ -89,6 +89,12 @@ Step* CutsceneManager::LoadStep(pugi::xml_node step)
 		ret->destiny.y = step.attribute("y").as_int();
 	}
 	else if (string == "activate") ret->action = ACTIVATE;
+	else if (string == "activate_at") 
+	{
+		ret->action = ACTIVATE_AT;
+		ret->destiny.x = step.attribute("x").as_int();
+		ret->destiny.y = step.attribute("y").as_int();
+	}
 	else if (string == "deactivate") ret->action = DEACTIVATE;
 	else if (string == "wait")
 	{
@@ -216,14 +222,29 @@ void Cutscene::DrawCutscene()
 	{
 		bool stepFinished = false;
 
-		stepFinished = this->activeStep->data->Draw();
-
-		if (stepFinished)
+		if (this->activeStep == nullptr)
 		{
-			this->activeStep = this->activeStep->next;
-			stepFinished = false;
+			this->active = false;
+			app->cutsceneMan->cutsceneIsActive = false;
+		}
+		else
+		{
+			stepFinished = this->activeStep->data->Draw();
+
+			if (stepFinished)
+			{
+				this->activeStep = this->activeStep->next;
+				stepFinished = false;
+				this->drawableStep == false;
+			}
 		}
 	}
+}
+
+void Cutscene::CleanUp()
+{
+	this->steps.Clear();
+	if (activeStep != nullptr) RELEASE(activeStep);
 }
 
 Step::Step()
@@ -272,6 +293,13 @@ bool Step::Update(float dt)
 		else if (this->action == ACTIVATE)
 		{
 			this->entity->active = true;
+			ret = true;
+		}
+		else if (this->action == ACTIVATE_AT)
+		{
+			this->entity->active = true;
+			this->entity->bounds.x = this->destiny.x;
+			this->entity->bounds.y = this->destiny.y;
 			ret = true;
 		}
 		else if (this->action == DEACTIVATE)
@@ -331,11 +359,11 @@ bool Step::Draw()
 			SDL_Rect r2 = { 390,600,500,100 };
 			app->render->DrawRectangle(r2, 255, 255, 255, 255, true);
 
-			app->render->DrawText(this->font, this->text.GetString(), { 400, 610, 480,80 }, 36, 5, { 0,0,0,255 }, 880);
+			app->render->DrawText(this->font, this->text.GetString(), { 400, 610, 480,80 }, 24, 5, { 0,0,0,255 }, 880);
 
-			this->duration -= 1000 * (1/60);
+			this->duration -= 1000 * 0.01666;
 
-			if (duration <= 0)
+			if (this->duration <= 0)
 			{
 				this->duration = this->durationAux;
 				ret = true;

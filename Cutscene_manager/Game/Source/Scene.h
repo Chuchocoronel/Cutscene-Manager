@@ -39,7 +39,6 @@ public:
 private:
 	SDL_Texture* img;
 	Cutscene* cutscene;
-	Entity* entity;
 	Map* map;
 	Font* font;
 };
