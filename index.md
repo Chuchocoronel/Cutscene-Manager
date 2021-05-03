@@ -50,6 +50,12 @@ This type of cutscenes uses pre-rendered and real time cutscenes when the develo
 
 ***Wing Comander 4***
 
+### Interactive cutscene
+
+Interactive cutscenes involve the computer taking control of the player character while prompts (such as a sequence of button presses) appear onscreen, requiring the player to follow them in order to continue or succeed at the action. This gameplay mechanic, commonly called quick time events.
+
+![gow4_cutscene](/docs/Gifs/gow4_cutscene.gif)
+
 ## Pros and cons
 
 All the types of cutscenes uses two systems to render and play them: real time or pre-rendered (like the real time and pre-rendered types).
