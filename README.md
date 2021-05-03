@@ -18,3 +18,17 @@ Here are all my contact links:
 - Twitter: [https://twitter.com/SrChuchocoronel](https://twitter.com/SrChuchocoronel)
 - Linked In: [https://www.linkedin.com/in/carlos-megia-zubillaga-b64bb31b7](https://www.linkedin.com/in/carlos-megia-zubillaga-b64bb31b7/)
 - Github: [https://github.com/Chuchocoronel?tab=repositories](https://github.com/Chuchocoronel?tab=repositories)
+
+LICENSES:
+
+Map tileset: https://gif-superretroworld.itch.io/exterior-pack
+
+Text font: https://www.dafont.com/es/game-over-cre.font
+
+Battle music: https://tallbeard.itch.io/three-red-hearts-prepare-to-dev
+
+Victory music: https://svl.itch.io/rpg-music-pack-svl
+
+Sword clash FX: free royalty
+
+Death FX: made by Chuchocoronel, free royalty

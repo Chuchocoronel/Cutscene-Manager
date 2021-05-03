@@ -36,6 +36,8 @@ bool Scene::Start()
 
 	font = new Font("Assets/Font/font3.xml", app->tex);
 
+	// TODO 4: Load all elements that participates in the cutscene
+	// HINT: You will need 4 entities (2 Reds and 2 blue), 2 FX, 2 Musics and 1 Font
 	cutscene = app->cutsceneMan->LoadCutscene("Assets/Cutscenes/cutscene1.xml");
 	cutscene->LoadEntityElement(app->entityMan->CreateEntity({ 200,200 }, EntityType::BLUE, true, true), 1);
 	cutscene->LoadEntityElement(app->entityMan->CreateEntity({ -39, 336 }, EntityType::BLUE, false, false), 2);

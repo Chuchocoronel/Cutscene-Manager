@@ -31,27 +31,8 @@ Cutscene* CutsceneManager::LoadCutscene(const char* path)
 
 		pugi::xml_node node = doc.child("cutscene");
 
-		List<Element*> elements;
-
 		// TODO 1: Load the <data/> from the XML file "cutscene1"
 		// HINT: You will need a list of elements to save the type and id, to then use the id to match the element with the action
-		// Loading data from the elements
-		for (pugi::xml_node it = node.child("data").first_child(); it; it = it.next_sibling())
-		{
-			Element* newElem = new Element();
-			SString string = it.attribute("type").as_string();
-
-			// Type of data
-			if (string == "entity") newElem->type = ENTITY;
-			else if (string == "fx")  newElem->type = FX;
-			else if (string == "music")  newElem->type = MUSIC;
-			else if (string == "text")  newElem->type = TEXT;
-
-			// Identificator
-			newElem->id = it.attribute("id").as_int();
-
-			elements.Add(newElem);
-		}
 
 		// Load steps
 		for (pugi::xml_node it = node.child("steps").first_child(); it; it = it.next_sibling())
@@ -63,7 +44,7 @@ Cutscene* CutsceneManager::LoadCutscene(const char* path)
 
 		// TODO 3: Discoment the code
 		// Put the data in elemens list to steps using the identificator
-		while (item != nullptr)
+		/*while (item != nullptr)
 		{
 			ListItem<Element*>* elemIt = elements.start;
 
@@ -79,7 +60,7 @@ Cutscene* CutsceneManager::LoadCutscene(const char* path)
 			}
 
 			item = item->next;
-		}
+		}*/
 	}
 	
 	return ret;
@@ -97,26 +78,8 @@ Step* CutsceneManager::LoadStep(pugi::xml_node step)
 	// HINT: actions --> enum StepActions
 	// HELP: Not necesary to do for the text, it needs something more to put it
 	// Load of the corresponding data depending on the type of action
-	if (string == "move")
-	{
-		ret->action = MOVE;
-		ret->destiny.x = step.attribute("x").as_int();
-		ret->destiny.y = step.attribute("y").as_int();
-	}
-	else if (string == "activate") ret->action = ACTIVATE;
-	else if (string == "activate_at") 
-	{
-		ret->action = ACTIVATE_AT;
-		ret->destiny.x = step.attribute("x").as_int();
-		ret->destiny.y = step.attribute("y").as_int();
-	}
-	else if (string == "deactivate") ret->action = DEACTIVATE;
-	else if (string == "wait")
-	{
-		ret->action = WAITING;
-		ret->duration = step.attribute("time").as_int();
-		ret->durationAux = ret->duration;
-	}
+
+
 
 	SString textString = step.attribute("text").as_string("no");
 

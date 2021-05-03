@@ -1,0 +1,64 @@
+<!--Elements to load from the data to cutscene:
+type = "entity"
+type = "fx"
+type = "music"
+type = "text"
+
+Types of actions:
+action = "move"
+action = "activate"
+action = "activate_at"
+action = "deactivate"
+action = "wait"
+
+////////////////////////////////////////////////
+
+How to put elements in data:
+
+<element type="" id=""/>
+
+////////////////////////////////////////////////
+
+How to put steps depending on the type:
+
+For Entities:
+<step id="" action="move" x="" y=""/>
+<step id="" action="activate"/>
+<step id="" action="activate_at" x="" y=""/>
+<step id="" action="deactivate"/>
+
+For FX or Music:
+<step id="" action="activate"/>
+<step id="" action="deactivate"/>
+
+For Text:
+<step id="" action="activate" text="" time=""/>
+
+For Wait:
+<step action="wait" time=""/>
+
+//////////////////////////////////////////////
+
+The order to create a cutscene is liake this:
+<cutscene>
+  <data>
+    <element type="" id=""/>
+  </data>
+  <steps>
+    <step id="" action=""/>
+  </steps>
+</cutscene>
+
+Extra: All the timing have to be in ms (miliseconds)
+//////////////////////////////////////////////
+-->
+
+<!--TODO 6: create a new cutscene at your own--> 
+<cutscene>
+  <data>
+    
+  </data>
+  <steps>
+    
+  </steps>
+</cutscene>
