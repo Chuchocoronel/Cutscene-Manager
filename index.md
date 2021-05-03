@@ -172,7 +172,7 @@ The step action it has what action is going to do the element: move, activate, a
 # Exercise
 
 Let's start with some coding!
-To do this exercise you will need to download the release with the handout and solution [Here](https://github-releases.githubusercontent.com/359130676/6837dd80-ac68-11eb-914c-bae5f9cdb283?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210503%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210503T214439Z&X-Amz-Expires=300&X-Amz-Signature=574e3b1fc4e1847e42658a33d5c1919babaa828b57b3a3e197e72d62dfd770f0&X-Amz-SignedHeaders=host&actor_id=61042926&key_id=0&repo_id=359130676&response-content-disposition=attachment%3B%20filename%3DCutscene_Manager.zip&response-content-type=application%2Foctet-stream).
+To do this exercise you will need to download the release with the handout and solution [Here](https://github.com/Chuchocoronel/Cutscene-Manager-Research/releases/download/v1.0/Cutscene_Manager.zip).
 
 ### TODO 1
 
@@ -233,6 +233,6 @@ https://unity3d.com/how-to/cutscenes-cinematics-with-timeline-and-cinemachine
 
 # Important links
 
-To download the release with handout and solution [Here](https://github-releases.githubusercontent.com/359130676/6837dd80-ac68-11eb-914c-bae5f9cdb283?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210503%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210503T214439Z&X-Amz-Expires=300&X-Amz-Signature=574e3b1fc4e1847e42658a33d5c1919babaa828b57b3a3e197e72d62dfd770f0&X-Amz-SignedHeaders=host&actor_id=61042926&key_id=0&repo_id=359130676&response-content-disposition=attachment%3B%20filename%3DCutscene_Manager.zip&response-content-type=application%2Foctet-stream).
+To download the release with handout and solution [Here](https://github.com/Chuchocoronel/Cutscene-Manager-Research/releases/download/v1.0/Cutscene_Manager.zip).
 
 To my github [Here](https://github.com/Chuchocoronel/Cutscene-Manager-Research)
