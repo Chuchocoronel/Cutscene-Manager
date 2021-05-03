@@ -58,6 +58,9 @@ bool Scene::PreUpdate()
 	bool ret = true;
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN) ret = false;
+
+	// TODO 5: Start the cutscene
+	// EXTRA: It only have to activate once, if activates multiple times, it will crash
 	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) cutscene->StartCutscene();
 
 	return ret;

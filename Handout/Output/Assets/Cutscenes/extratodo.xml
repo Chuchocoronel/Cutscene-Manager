@@ -53,7 +53,11 @@ Extra: All the timing have to be in ms (miliseconds)
 //////////////////////////////////////////////
 -->
 
-<!--TODO 6: create a new cutscene at your own--> 
+<!--TODO 6: create a new cutscene at your own
+
+EXTRA: Remember that you will have to redo all 
+the TODO 4 and 5 for the new variables (if there are new).--> 
+
 <cutscene>
   <data>
     

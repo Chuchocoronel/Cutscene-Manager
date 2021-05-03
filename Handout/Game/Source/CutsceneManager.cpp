@@ -75,8 +75,8 @@ Step* CutsceneManager::LoadStep(pugi::xml_node step)
 	SString string = step.attribute("action").as_string();
 
 	// TODO 2: Put the data necessary of the step depending on the action
-	// HINT: actions --> enum StepActions
-	// HELP: Not necesary to do for the text, it needs something more to put it
+	// HINT: You will find the actions in the ***enum StepActions***, use string above to know the action.
+	// HELP: Not necesary to do for the text, but study how its done
 	// Load of the corresponding data depending on the type of action
 
 
