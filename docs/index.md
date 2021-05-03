@@ -16,7 +16,7 @@ There are different types of cutscenes, for example:
 
 Pre-rendered cutscenes are animated and rendered by the game's developers, and take advantage of the full techniques of CGI, animation or graphics.
 
-![Final Fantasy VII Remake](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Gifs/ff7_remake_cutscene.gif)
+![Final Fantasy VII Remake](/docs/Gifs/ff7_remake_cutscene.gif)
 
 ***Final Fantasy VII Remake***
 
@@ -28,17 +28,17 @@ Pre-rendered cutscenes are animated and rendered by the game's developers, and t
 
 Real time cutscenes are rendred ***on-the-fly*** using the game engine graphics during gameplay (this technique is also known as [Machinima](https://en.wikipedia.org/wiki/Machinima)).
 
-![Grand Theft Auto 5](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Gifs/gta5_cutscene.gif)
+![Grand Theft Auto 5](/docs/Gifs/gta5_cutscene.gif)
 
 ***Grand Theft Auto 5***
 
-![Nier: Automata](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Gifs/nier_automata_cutscene.gif)
+![Nier: Automata](/docs/Gifs/nier_automata_cutscene.gif)
 
 ***Nier: Automata***
 
 ### Live-action cutscenes
 
-![Need for Speed](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Gifs/need_for_speed_cutscene.gif)
+![Need for Speed](/docs/Gifs/need_for_speed_cutscene.gif)
 
 ***Need for Speed***
 
@@ -46,7 +46,7 @@ Real time cutscenes are rendred ***on-the-fly*** using the game engine graphics 
 
 This type of cutscenes uses pre-rendered and real time cutscenes when the developer think is appropiate.
 
-![Wing Comander 4](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Gifs/wing_commander_4_cutscene.gif)
+![Wing Comander 4](/docs/Gifs/wing_commander_4_cutscene.gif)
 
 ***Wing Comander 4***
 
@@ -118,7 +118,7 @@ The structure to save the data from the XML in our code is going to be the follo
 
 ### Cutscene Manager:
 
-![Cutscene Manager](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Images/cutscene_manager.png)
+![Cutscene Manager](/docs/Images/cutscene_manager.png)
 
 The cutscene manager is not going to be a module, instead it will be a pointer from a global pointer named ***app*** to acces to all scenes if necesary.
 The manager it will be use, only to load the cutscene from the XML and will return a ***Cutscene**** to implement in an instance on the scene. 
@@ -126,21 +126,21 @@ The boolean is going to be use if in other modules or parts of code, outside the
 
 ### Cutscene:
 
-![Cutscene](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Images/cutscene.png)
+![Cutscene](/docs/Images/cutscene.png)
 
 The cutscene is going to have all the steps to follow while playing the cutscene, the step is playing, all the functions to start, update, draw and clean (like a module functionality) the cutscene. Also it will load the elements you want to participate in the cutscene from the code, and implement their data from the code to the cutscene.
 It also have two boleans, one to see if the cutscene is active, and other when the step requires to render something.
 
 ### Step:
 
-![Step](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Images/step.png)
+![Step](/docs/Images/step.png)
 
 The step it will save what element is going to do the action, what action, and its specific data depending on the type of element is acting.
 To know save the element data from the xml we will use the class Element:
 
 ### Element:
 
-![Element](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Images/element.png)
+![Element](/docs/Images/element.png)
 
 The element will have what type of element is going to act and the identificator.
 
@@ -148,13 +148,13 @@ The type of step and what action is going to do, we have two enums:
 
 ### Step Type:
 
-![Step Type](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Images/step_type.png)
+![Step Type](/docs/Images/step_type.png)
 
 The step type it has what is going to do the action: an entity, fx (audio effect), music, text or wait (which have its own action).
 
 ### Step Action:
 
-![Step Action](https://github.com/Chuchocoronel/Cutscene-Manager/blob/main/docs/Images/step_action.png)
+![Step Action](/docs/Images/step_action.png)
 
 The step action it has what action is going to do the element: move, activate, activate_at (at specific position, X and Y), deactivate ot waiting (unique action from type wait).
 
