@@ -56,6 +56,8 @@ Interactive cutscenes involve the computer taking control of the player characte
 
 ![gow4_cutscene](/docs/Gifs/gow4_cutscene.gif)
 
+***God of War***
+
 ## Pros and cons
 
 All the types of cutscenes uses two systems to render and play them: real time or pre-rendered (like the real time and pre-rendered types).
