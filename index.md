@@ -167,3 +167,69 @@ The step type it has what is going to do the action: an entity, fx (audio effect
 The step action it has what action is going to do the element: move, activate, activate_at (at specific position, X and Y), deactivate ot waiting (unique action from type wait).
 
 # Exercise
+
+Let's start with some coding!
+To do this exercise you will need to download the release with the handout and solution [Here](https://github-releases.githubusercontent.com/359130676/6837dd80-ac68-11eb-914c-bae5f9cdb283?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210503%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210503T214439Z&X-Amz-Expires=300&X-Amz-Signature=574e3b1fc4e1847e42658a33d5c1919babaa828b57b3a3e197e72d62dfd770f0&X-Amz-SignedHeaders=host&actor_id=61042926&key_id=0&repo_id=359130676&response-content-disposition=attachment%3B%20filename%3DCutscene_Manager.zip&response-content-type=application%2Foctet-stream).
+
+### TODO 1
+
+Load the <data/> from the XML file "cutscene1".
+With pugiXML you have to obtain the data from the part <data/> (not <steps/>) and put in an ELEMENT the type and id.
+
+HINT: You will need a list of elements to save the type and id, to then use the id to match the element with the action.
+
+### TODO 2
+
+Put the data necessary of the step depending on the action.
+Continuing with XML, you will have to put the data that needs every step depending on the action that is goint to be done.
+
+HINT: the actions you will find in the ***enum StepActions***, use string above to know the action.
+
+HELP: Not necesary to do for the text, but study how its done.
+
+### TODO 3
+
+Discoment the code below. Nothing more.
+
+### TODO 4
+
+Load all elements that participates in the cutscene.
+Use the functions inside the cutscene* variable.
+
+HINT: You will need 4 entities (2 Reds and 2 blue), 2 FX, 2 Musics and 1 Font.
+
+### TODO 5
+
+Start, Update and Draw and Clean the cutscene.
+
+EXTRA: In start it only have to activate once, if activates multiple times, it will crash.
+
+EXTRA: In Update and Draw only have to enter when the cutscene is activated.
+
+### TODO 6
+
+In ***extratodo.xml*** create a new cutscene at your own.
+
+EXTRA: Remember that you will have to redo all the TODO 4 and 5 for the new variables (if there are new).
+
+# Bibliography
+
+https://en.wikipedia.org/wiki/Cutscene
+
+https://learn.unity.com/tutorial/timeline#
+
+https://www.gamasutra.com/view/feature/3001/better_game_design_through_.php?print=1
+
+https://docs.unrealengine.com/en-US/AnimatingObjects/Sequencer/Overview/index.html
+
+https://docs.unrealengine.com/en-US/AnimatingObjects/Matinee/index.html
+
+https://learn.unity.com/project/cutscenes-and-trailers-with-timeline-and-cinemachine
+
+https://unity3d.com/how-to/cutscenes-cinematics-with-timeline-and-cinemachine
+
+# Important links
+
+To download the release with handout and solution [Here](https://github-releases.githubusercontent.com/359130676/6837dd80-ac68-11eb-914c-bae5f9cdb283?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210503%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210503T214439Z&X-Amz-Expires=300&X-Amz-Signature=574e3b1fc4e1847e42658a33d5c1919babaa828b57b3a3e197e72d62dfd770f0&X-Amz-SignedHeaders=host&actor_id=61042926&key_id=0&repo_id=359130676&response-content-disposition=attachment%3B%20filename%3DCutscene_Manager.zip&response-content-type=application%2Foctet-stream).
+
+To my github [Here](https://github.com/Chuchocoronel/Cutscene-Manager-Research)
