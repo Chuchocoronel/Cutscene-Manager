@@ -121,6 +121,9 @@ Both of them uses the multi-track sequencer to edit and create the cutscenes.
 Our objective is to create a practical and functional cutscene manager to create and manage cutscenes in our projects.
 
 We will create a library which will read the steps and data of a cutscene from a XML file.
+
+![XML](/docs/Images/xml_cutscene.png)
+
 The manager will be able to support audio effects, musics, entities and texts.
 The structure to save the data from the XML in our code is going to be the following:
 
@@ -174,7 +177,7 @@ To do this exercise you will need to download the release with the handout and s
 ### TODO 1
 
 Load the <data/> from the XML file "cutscene1".
-With pugiXML you have to obtain the data from the part <data/> (not <steps/>) and put in an ELEMENT the type and id.
+With pugiXML you have to obtain the data from the part ***data*** (not ***steps***) and put in an ELEMENT the type and id.
 
 HINT: You will need a list of elements to save the type and id, to then use the id to match the element with the action.
 
