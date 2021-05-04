@@ -41,6 +41,9 @@ private:
 	Cutscene* cutscene;
 	Map* map;
 	Font* font;
+
+	// TODO 4: Load all elements that participates in the cutscene
+	// HINT: It's not necessary to create variables here except for FONT
 };
 
 #endif // __SCENE_H__

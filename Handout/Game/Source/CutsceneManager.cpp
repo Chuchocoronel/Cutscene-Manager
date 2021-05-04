@@ -60,7 +60,9 @@ Cutscene* CutsceneManager::LoadCutscene(const char* path)
 			}
 
 			item = item->next;
-		}*/
+		}
+		
+		elements.Clear();*/
 	}
 	
 	return ret;
@@ -177,7 +179,7 @@ void Cutscene::StartCutscene()
 	// This, probably, depending on the project, it can be erased
 	while (it != nullptr)
 	{
-		if (it->data->element.type == ENTITY)
+		if (it->data->element.type == ENTITY && it->data->entity != nullptr)
 		{
 			it->data->entity->active = false;
 		}

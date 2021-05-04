@@ -69,6 +69,9 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
+	// TODO 5: Update the cutscene
+	// EXTRA: Only have to enter when the cutscene is activated
+	// use, for example, GetKey
 	if (cutscene->active == true) cutscene->UpdateCutscene(dt);
 
 	return true;
@@ -79,6 +82,8 @@ bool Scene::PostUpdate()
 {
 	map->Draw(app->render);
 
+	// TODO 5: Draw the cutscene
+	// EXTRA: Only have to enter when the cutscene is activated
 	if (cutscene->active == true) cutscene->DrawCutscene();
 
 	return true;
@@ -89,6 +94,7 @@ bool Scene::CleanUp()
 {
 	LOG("Freeing scene");
 
+	// TODO 5: Clean the cutscene
 	cutscene->CleanUp();
 	RELEASE(cutscene);
 

@@ -31,11 +31,12 @@ Cutscene* CutsceneManager::LoadCutscene(const char* path)
 
 		pugi::xml_node node = doc.child("cutscene");
 
-		List<Element*> elements;
-
 		// TODO 1: Load the <data/> from the XML file "cutscene1"
 		// HINT: You will need a list of elements to save the type and id, to then use the id to match the element with the action
 		// Loading data from the elements
+
+		List<Element*> elements;
+
 		for (pugi::xml_node it = node.child("data").first_child(); it; it = it.next_sibling())
 		{
 			Element* newElem = new Element();
@@ -80,6 +81,8 @@ Cutscene* CutsceneManager::LoadCutscene(const char* path)
 
 			item = item->next;
 		}
+
+		elements.Clear();
 	}
 	
 	return ret;
@@ -214,7 +217,7 @@ void Cutscene::StartCutscene()
 	// This, probably, depending on the project, it can be erased
 	while (it != nullptr)
 	{
-		if (it->data->element.type == ENTITY)
+		if (it->data->element.type == ENTITY && it->data->entity != nullptr)
 		{
 			it->data->entity->active = false;
 		}

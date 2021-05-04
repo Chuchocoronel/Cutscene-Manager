@@ -38,6 +38,7 @@ bool Scene::Start()
 
 	// TODO 4: Load all elements that participates in the cutscene
 	// HINT: You will need 4 entities (2 Reds and 2 blue), 2 FX, 2 Musics and 1 Font
+	font = new Font("Assets/Font/font3.xml", app->tex);
 
 	return true;
 }
@@ -51,6 +52,7 @@ bool Scene::PreUpdate()
 
 	// TODO 5: Start the cutscene
 	// EXTRA: It only have to activate once, if activates multiple times, it will crash
+	// use, for example, GetKey
 
 	return ret;
 }
