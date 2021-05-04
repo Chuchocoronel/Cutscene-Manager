@@ -4,7 +4,7 @@ My objective is to create a functional cutscene manager to create simple cutscen
 
 # What is a Cutscene?
 
-The most obvious thefinition of a cutscene is a "film in a game", according to wikipedia, a cutscene or event scene (sometimes in-game cinematic or in-game movie) is a sequence in a video game that is not interactive, breaking up the gameplay.
+The most obvious definition of a cutscene is a "film in a game", according to wikipedia, a cutscene or event scene (sometimes in-game cinematic or in-game movie) is a sequence in a video game that is not interactive, breaking up the gameplay.
 
 Cutscenes are often used for conversations between characters, reward the player, introduce new gameplay features or elements, but, ususally, to explain parts of the game story, to let the player connect with the characters, like a movie, where the player can't interact. But recently, has appeared this new type of cutscenes more interactive, called "quick time events", where the player has to press specific buttons to continue the scene.
 
@@ -66,7 +66,7 @@ All the types of cutscenes uses two systems to render and play them: real time o
 
 Pros:
 
-- There is no diference between gameplay and cutscene graphics.
+- There is no difference between gameplay and cutscene graphics.
 - If the game uses cosmetics, they can be seen also in the cutscene.
 - It not uses a lot of memory to save (it's code)
 
@@ -74,7 +74,7 @@ Cons:
 
 - Multiple elements that can affect the cutscene and affect negatively in the performance.
 - Limitation in graphics by the game engine.
-- Uses CPU and RAM for the calculations at the same time the cutscene is playing.
+- Uses CPU and RAM for calculations at the same time the cutscene is playing.
 
 **Pre-rendered**
 
@@ -86,7 +86,7 @@ Cons:
 
 - If the game have cosmetics it will not show up.
 - The size is much more bigger to save in memory.
-- Can break the flow of the game because the difference in graphics quality.
+- Can break the flow of the game because of difference in graphics quality.
 
 # Cutscene Editors
 
@@ -205,7 +205,7 @@ HINT: You will need 4 entities (2 Reds and 2 blue), 2 FX, 2 Musics and 1 Font.
 
 Start, Update and Draw and Clean the cutscene.
 
-EXTRA: In start it only have to activate once, if activates multiple times, it will crash.
+EXTRA: In start it only have to activate once, if activates multiple times, it will crash, use for example, GetKey.
 
 EXTRA: In Update and Draw only have to enter when the cutscene is activated.
 
@@ -233,6 +233,10 @@ https://unity3d.com/how-to/cutscenes-cinematics-with-timeline-and-cinemachine
 
 # Important links
 
-To download the release with handout and solution [Here](https://github.com/Chuchocoronel/Cutscene-Manager-Research/releases/download/v1.0/Cutscene_Manager.zip).
+Download the release with handout and solution [Here](https://github.com/Chuchocoronel/Cutscene-Manager-Research/releases/download/v1.0/Cutscene_Manager.zip).
 
-To my github [Here](https://github.com/Chuchocoronel/Cutscene-Manager-Research)
+My github research [Here](https://github.com/Chuchocoronel/Cutscene-Manager-Research)
+
+My Linked In [Here](https://www.linkedin.com/in/carlos-megia-zubillaga-b64bb31b7)
+
+My Twitter [Here](https://twitter.com/SrChuchocoronel)
